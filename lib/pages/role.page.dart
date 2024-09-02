@@ -1,3 +1,4 @@
+import 'package:demo_app/models/login_response_model.dart';
 import 'package:demo_app/pages/role_details.page.dart';
 import 'package:demo_app/role/model/role.model.dart';
 import 'package:demo_app/role/widgets/role.widget.dart';
@@ -5,7 +6,9 @@ import 'package:demo_app/mock/role.mock.dart';
 import 'package:flutter/material.dart';
 
 class RolePage extends StatefulWidget {
-  const RolePage({super.key});
+  final LoginResponseModel loginResponse;
+
+  const RolePage({super.key, required this.loginResponse});
 
   @override
   State<RolePage> createState() => _RolePageState();
@@ -18,7 +21,7 @@ class _RolePageState extends State<RolePage> {
       appBar: AppBar(
         title: Text("SpaceX App"),
       ),
-      floatingActionButton: FloatingActionButton(
+    /*  floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {
             setState(() {
@@ -31,13 +34,14 @@ class _RolePageState extends State<RolePage> {
                 ),
               );
             });
-          }),
+          }),*/
       body: ListView.builder(
         //shrinkWrap: true,
-        itemCount: mockRoles.length,
+        itemCount: widget.loginResponse.data?.roles?.length ?? 0,
         itemBuilder: (context, index) {
-          final currentRole = mockRoles[index];
-          return roleWidget(
+          final currentRole = widget.loginResponse.data?.roles?[index];
+          if(currentRole != null) {
+            return roleWidget(
               currentRole: currentRole,
               onRoleClicked: () {
                 //Navigator.pop(context);
@@ -50,6 +54,9 @@ class _RolePageState extends State<RolePage> {
                   ),
                 );
               });
+          }else {
+            return SizedBox.shrink(); // Return an empty widget if currentRole is null
+          }
         },
       ),
       /*

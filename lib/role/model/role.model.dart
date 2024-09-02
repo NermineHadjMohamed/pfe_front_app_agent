@@ -1,3 +1,4 @@
+/*
 class RoleModel {
   final String roleName;
   final String roleDate;
@@ -11,3 +12,4 @@ class RoleModel {
     required this.isSuccess,
   });
 }
+*/
