@@ -1,5 +1,7 @@
 import 'package:demo_app/api/api_service.dart';
 import 'package:demo_app/config.dart';
+import 'package:demo_app/models/login_response_model.dart';
+import 'package:demo_app/pages/role.page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
@@ -26,13 +28,13 @@ class _LoginPageState extends State<LoginPage> {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: ProgressHUD(
+          inAsyncCall: isAsyncCallProcess,
+          opacity: 0.3,
+          key: UniqueKey(),
           child: Form(
             key: globalKey,
             child: _loginUI(),
           ),
-          inAsyncCall: isAsyncCallProcess,
-          opacity: 0.3,
-          key: UniqueKey(),
         ),
       ),
     );
@@ -162,7 +164,11 @@ class _LoginPageState extends State<LoginPage> {
                         isAsyncCallProcess = false;
                       });
 
-                      if (res) {
+                      if (res != null) {
+                        final loginResponse = LoginResponseModel(
+                          message: res.message,
+                          data: res.data,
+                        );
                         FormHelper.showSimpleAlertDialog(
                           context,
                           Config.appName,
@@ -170,10 +176,18 @@ class _LoginPageState extends State<LoginPage> {
                           "ok",
                           () {
                             Navigator.of(context).pop();
-                            Navigator.pushNamedAndRemoveUntil(
+                            Navigator.pushReplacement(
                               context,
+<<<<<<< HEAD
                               "/ProductDetails",
                               (route) => false,
+=======
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) => RolePage(
+                                  loginResponse: loginResponse, // Pass the login response here
+                                ),
+                              ),
+>>>>>>> 0a0ccd66aaa85b1f0def1417ac45e1a9d89839b3
                             );
                           },
                         );
