@@ -1,4 +1,3 @@
-/*
 
 import 'package:demo_app/role/model/role.model.dart';
 
@@ -13,9 +12,4 @@ List<RoleModel> mockRoles = List.generate(
       isSuccess: index % 2 == 0,
     );
   },
-<<<<<<< HEAD:lib/role/widgets/role.mock.dart
 );
-=======
-);
-*/
->>>>>>> 0a0ccd66aaa85b1f0def1417ac45e1a9d89839b3:lib/mock/role.mock.dart

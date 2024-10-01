@@ -1,11 +1,10 @@
 
-import 'package:demo_app/models/login_response_model.dart';
 import 'package:demo_app/role/model/role.model.dart';
 import 'package:demo_app/role/widgets/role.widget.dart';
 import 'package:flutter/material.dart';
 
 class RoleDetails extends StatelessWidget {
-  final Roles currentRole;
+  final RoleModel currentRole;
   const RoleDetails({super.key, required this.currentRole});
 
   @override
