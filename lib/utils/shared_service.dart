@@ -1,8 +1,7 @@
 import 'dart:convert';
 
-
+import 'package:api_cache_manager/api_cache_manager.dart';
 import 'package:api_cache_manager/models/cache_db_model.dart';
-import 'package:api_cache_manager/utils/cache_manager.dart';
 import 'package:demo_app/models/login_response_model.dart';
 import 'package:flutter/widgets.dart';
 
@@ -42,4 +41,6 @@ class SharedService {
       (route) => false,
     );
   }
+
+  static getLoginResponse() {}
 }

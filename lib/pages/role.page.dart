@@ -1,7 +1,7 @@
 import 'package:demo_app/pages/role_details.page.dart';
 import 'package:demo_app/role/model/role.model.dart';
+import 'package:demo_app/role/widgets/role.mock.dart';
 import 'package:demo_app/role/widgets/role.widget.dart';
-import 'package:demo_app/mock/role.mock.dart';
 import 'package:flutter/material.dart';
 
 class RolePage extends StatefulWidget {

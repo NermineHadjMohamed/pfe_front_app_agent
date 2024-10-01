@@ -1,16 +1,9 @@
-
 import 'package:demo_app/api/api_service.dart';
 import 'package:demo_app/config.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter/material.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
 import 'package:snippet_coder_utils/ProgressHUD.dart';
-
-
-
-
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -22,11 +15,11 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool isAsyncCallProcess = false;
   GlobalKey<FormState> globalKey = GlobalKey<FormState>();
-  
+
   String? email;
   String? password;
   bool hidePassword = true;
-  bool isRemeber = false;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -51,9 +44,7 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           Center(
             child: Image.asset(
               "assets/images/novation.png",
@@ -61,9 +52,7 @@ class _LoginPageState extends State<LoginPage> {
               width: 150,
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           Center(
             child: Text(
               "Agent App",
@@ -73,9 +62,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           Center(
             child: Text(
               "Login",
@@ -86,9 +73,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           FormHelper.inputFieldWidget(
             context,
             "Email",
@@ -123,9 +108,7 @@ class _LoginPageState extends State<LoginPage> {
             backgroundColor: Colors.grey.shade100,
             borderFocusColor: Colors.grey.shade200,
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           FormHelper.inputFieldWidget(
             context,
             "Password",
@@ -134,7 +117,6 @@ class _LoginPageState extends State<LoginPage> {
               if (onValidate.isEmpty) {
                 return "* Required";
               }
-
               return null;
             },
             (onSaved) {
@@ -152,10 +134,20 @@ class _LoginPageState extends State<LoginPage> {
             hintColor: Colors.black.withOpacity(.6),
             backgroundColor: Colors.grey.shade100,
             borderFocusColor: Colors.grey.shade200,
+            obscureText: hidePassword,
+            suffixIcon: IconButton(
+              icon: Icon(
+                hidePassword ? Icons.visibility_off : Icons.visibility,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                setState(() {
+                  hidePassword = !hidePassword; // Toggle password visibility
+                });
+              },
+            ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           Center(
             child: FormHelper.submitButton(
               "Sign In",
@@ -174,13 +166,13 @@ class _LoginPageState extends State<LoginPage> {
                         FormHelper.showSimpleAlertDialog(
                           context,
                           Config.appName,
-                          "User Logged-INn Successfully",
+                          "User Logged In Successfully",
                           "ok",
                           () {
                             Navigator.of(context).pop();
                             Navigator.pushNamedAndRemoveUntil(
                               context,
-                              "/Role",
+                              "/ProductDetails",
                               (route) => false,
                             );
                           },
@@ -206,8 +198,6 @@ class _LoginPageState extends State<LoginPage> {
               borderRadius: 20,
             ),
           ),
-        
-          
         ],
       ),
     );

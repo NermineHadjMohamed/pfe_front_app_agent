@@ -36,7 +36,9 @@ dependencies:
   flutter_riverpod: 
   cupertino_icons: 
   snippet_coder_utils:
-  api_cache_manager:  
+  api_cache_manager: 
+  nfc_manager:
+  provider:
 
 
 
