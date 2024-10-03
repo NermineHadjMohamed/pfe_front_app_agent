@@ -28,12 +28,8 @@ mixin _$Role {
   @JsonKey(name: 'description')
   String get description => throw _privateConstructorUsedError;
 
-  /// Serializes this Role to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Role
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $RoleCopyWith<Role> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -58,8 +54,6 @@ class _$RoleCopyWithImpl<$Res, $Val extends Role>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Role
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -104,8 +98,6 @@ class __$$RoleImplCopyWithImpl<$Res>
   __$$RoleImplCopyWithImpl(_$RoleImpl _value, $Res Function(_$RoleImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Role
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -169,13 +161,11 @@ class _$RoleImpl implements _Role {
                 other.description == description));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, roleName, description);
 
-  /// Create a copy of Role
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$RoleImplCopyWith<_$RoleImpl> get copyWith =>
@@ -200,18 +190,15 @@ abstract class _Role implements Role {
 
   @override
   @JsonKey(name: '_id')
-  String get id; // Assuming you have an ID field
-  @override
+  String get id;
+  @override // Assuming you have an ID field
   @JsonKey(name: 'role_name')
   String get roleName;
   @override
   @JsonKey(name: 'description')
   String get description;
-
-  /// Create a copy of Role
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$RoleImplCopyWith<_$RoleImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

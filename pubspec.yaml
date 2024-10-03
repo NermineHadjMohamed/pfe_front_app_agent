@@ -39,6 +39,10 @@ dependencies:
   api_cache_manager: 
   nfc_manager:
   provider:
+  google_ml_kit:
+  camera:
+  google_mlkit_text_recognition:
+  permission_handler:
 
 
 

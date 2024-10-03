@@ -28,12 +28,8 @@ mixin _$Parameter {
   @JsonKey(name: 'parameter_value')
   String get parameterValue => throw _privateConstructorUsedError;
 
-  /// Serializes this Parameter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Parameter
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ParameterCopyWith<Parameter> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,8 +55,6 @@ class _$ParameterCopyWithImpl<$Res, $Val extends Parameter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Parameter
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,8 +101,6 @@ class __$$ParameterImplCopyWithImpl<$Res>
       _$ParameterImpl _value, $Res Function(_$ParameterImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Parameter
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -172,14 +164,12 @@ class _$ParameterImpl implements _Parameter {
                 other.parameterValue == parameterValue));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, parameterName, parameterValue);
 
-  /// Create a copy of Parameter
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ParameterImplCopyWith<_$ParameterImpl> get copyWith =>
@@ -208,15 +198,12 @@ abstract class _Parameter implements Parameter {
   String get id;
   @override
   @JsonKey(name: 'parameter_name')
-  String get parameterName; // Name of the parameter
-  @override
+  String get parameterName;
+  @override // Name of the parameter
   @JsonKey(name: 'parameter_value')
   String get parameterValue;
-
-  /// Create a copy of Parameter
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ParameterImplCopyWith<_$ParameterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

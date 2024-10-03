@@ -45,12 +45,8 @@ mixin _$Product {
   @JsonKey(name: 'parameters')
   List<String>? get parameters => throw _privateConstructorUsedError;
 
-  /// Serializes this Product to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Product
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -81,8 +77,6 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Product
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -164,8 +158,6 @@ class __$$ProductImplCopyWithImpl<$Res>
       _$ProductImpl _value, $Res Function(_$ProductImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Product
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -318,7 +310,7 @@ class _$ProductImpl implements _Product {
                 .equals(other._parameters, _parameters));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -332,9 +324,7 @@ class _$ProductImpl implements _Product {
       const DeepCollectionEquality().hash(_roles),
       const DeepCollectionEquality().hash(_parameters));
 
-  /// Create a copy of Product
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
@@ -368,33 +358,30 @@ abstract class _Product implements Product {
   String get id;
   @override
   @JsonKey(name: 'product_name')
-  String get productName; // Name of the product
-  @override
+  String get productName;
+  @override // Name of the product
   @JsonKey(name: 'description')
-  String? get description; // Description of the product (nullable)
-  @override
+  String? get description;
+  @override // Description of the product (nullable)
   @JsonKey(name: 'image')
-  String get image; // Image URL
-  @override
+  String get image;
+  @override // Image URL
   @JsonKey(name: 'document')
-  String? get document; // Document URL (nullable)
-  @override
+  String? get document;
+  @override // Document URL (nullable)
   @JsonKey(name: 'parameter_types')
-  String? get parameterTypes; // Parameter types (nullable)
-  @override
+  String? get parameterTypes;
+  @override // Parameter types (nullable)
   @JsonKey(name: 'product_price')
-  double get productPrice; // Product price
-  @override
+  double get productPrice;
+  @override // Product price
   @JsonKey(name: 'roles')
-  List<String>? get roles; // List of role IDs associated with the product
-  @override
+  List<String>? get roles;
+  @override // List of role IDs associated with the product
   @JsonKey(name: 'parameters')
   List<String>? get parameters;
-
-  /// Create a copy of Product
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

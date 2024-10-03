@@ -39,12 +39,8 @@ mixin _$Task {
   @JsonKey(name: 'finishTime')
   DateTime? get finishTime => throw _privateConstructorUsedError;
 
-  /// Serializes this Task to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Task
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $TaskCopyWith<Task> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -73,8 +69,6 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Task
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,8 +137,6 @@ class __$$TaskImplCopyWithImpl<$Res>
   __$$TaskImplCopyWithImpl(_$TaskImpl _value, $Res Function(_$TaskImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Task
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -253,14 +245,12 @@ class _$TaskImpl implements _Task {
                 other.finishTime == finishTime));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, productId, roleId, agentId,
       status, startTime, finishTime);
 
-  /// Create a copy of Task
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$TaskImplCopyWith<_$TaskImpl> get copyWith =>
@@ -291,27 +281,24 @@ abstract class _Task implements Task {
   String get id;
   @override
   @JsonKey(name: 'productId')
-  String get productId; // Reference to Product
-  @override
+  String get productId;
+  @override // Reference to Product
   @JsonKey(name: 'roleId')
-  String get roleId; // Reference to Role
-  @override
+  String get roleId;
+  @override // Reference to Role
   @JsonKey(name: 'agentId')
-  String get agentId; // Reference to Agent
-  @override
+  String get agentId;
+  @override // Reference to Agent
   @JsonKey(name: 'status')
-  String get status; // Task status (started or finished)
-  @override
+  String get status;
+  @override // Task status (started or finished)
   @JsonKey(name: 'startTime')
-  DateTime get startTime; // Start time of the task
-  @override
+  DateTime get startTime;
+  @override // Start time of the task
   @JsonKey(name: 'finishTime')
   DateTime? get finishTime;
-
-  /// Create a copy of Task
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$TaskImplCopyWith<_$TaskImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

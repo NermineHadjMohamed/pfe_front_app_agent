@@ -1,5 +1,5 @@
 
-import 'package:demo_app/pages/ProductDetails_page.dart';
+import 'package:demo_app/pages/task_details.page.dart';
 import 'package:demo_app/pages/login_page.dart';
 import 'package:demo_app/prsentation/screen/read_write_nfc_screen.dart';
 import 'package:demo_app/utils/shared_service.dart';
@@ -9,6 +9,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Widget _defaultHome = const LoginPage();
+
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,7 +56,8 @@ class MainApp extends StatelessWidget {
             '/': (context) =>
                 isLoggedIn ?  ReadWriteNFCScreen() : const LoginPage(),
             '/loginAgent': (BuildContext context) => const LoginPage(),
-            '/ProductDetails': (BuildContext context) => ProductDetailsPage(),
+            '/ReadWriteNFCScreen': (BuildContext context) =>ReadWriteNFCScreen(),
+            
            
           },
         );

@@ -29,12 +29,8 @@ mixin _$OrderProduction {
   @JsonKey(name: 'products')
   List<OrderProduct> get products => throw _privateConstructorUsedError;
 
-  /// Serializes this OrderProduction to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of OrderProduction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $OrderProductionCopyWith<OrderProduction> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,8 +58,6 @@ class _$OrderProductionCopyWithImpl<$Res, $Val extends OrderProduction>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of OrderProduction
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -116,8 +110,6 @@ class __$$OrderProductionImplCopyWithImpl<$Res>
       _$OrderProductionImpl _value, $Res Function(_$OrderProductionImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OrderProduction
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -195,14 +187,12 @@ class _$OrderProductionImpl implements _OrderProduction {
             const DeepCollectionEquality().equals(other._products, _products));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, orderId, expectedFinishDate,
       const DeepCollectionEquality().hash(_products));
 
-  /// Create a copy of OrderProduction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderProductionImplCopyWith<_$OrderProductionImpl> get copyWith =>
@@ -241,11 +231,8 @@ abstract class _OrderProduction implements OrderProduction {
   @override
   @JsonKey(name: 'products')
   List<OrderProduct> get products;
-
-  /// Create a copy of OrderProduction
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$OrderProductionImplCopyWith<_$OrderProductionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -268,12 +255,8 @@ mixin _$OrderProduct {
   @JsonKey(name: 'roles')
   List<RoleDetails> get roles => throw _privateConstructorUsedError;
 
-  /// Serializes this OrderProduct to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of OrderProduct
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $OrderProductCopyWith<OrderProduct> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -302,8 +285,6 @@ class _$OrderProductCopyWithImpl<$Res, $Val extends OrderProduct>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of OrderProduct
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -362,8 +343,6 @@ class __$$OrderProductImplCopyWithImpl<$Res>
       _$OrderProductImpl _value, $Res Function(_$OrderProductImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OrderProduct
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -465,7 +444,7 @@ class _$OrderProductImpl implements _OrderProduct {
             const DeepCollectionEquality().equals(other._roles, _roles));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -475,9 +454,7 @@ class _$OrderProductImpl implements _OrderProduct {
       const DeepCollectionEquality().hash(_selectedNfcTags),
       const DeepCollectionEquality().hash(_roles));
 
-  /// Create a copy of OrderProduct
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderProductImplCopyWith<_$OrderProductImpl> get copyWith =>
@@ -515,15 +492,12 @@ abstract class _OrderProduct implements OrderProduct {
   DateTime get expectedFinishDate;
   @override
   @JsonKey(name: 'selectedNfcTags')
-  List<String>? get selectedNfcTags; // List of NFC Tag IDs
-  @override
+  List<String>? get selectedNfcTags;
+  @override // List of NFC Tag IDs
   @JsonKey(name: 'roles')
   List<RoleDetails> get roles;
-
-  /// Create a copy of OrderProduct
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$OrderProductImplCopyWith<_$OrderProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -539,12 +513,8 @@ mixin _$RoleDetails {
   @JsonKey(name: 'agents')
   List<String>? get agents => throw _privateConstructorUsedError;
 
-  /// Serializes this RoleDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of RoleDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $RoleDetailsCopyWith<RoleDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -570,8 +540,6 @@ class _$RoleDetailsCopyWithImpl<$Res, $Val extends RoleDetails>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of RoleDetails
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -612,8 +580,6 @@ class __$$RoleDetailsImplCopyWithImpl<$Res>
       _$RoleDetailsImpl _value, $Res Function(_$RoleDetailsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of RoleDetails
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -672,14 +638,12 @@ class _$RoleDetailsImpl implements _RoleDetails {
             const DeepCollectionEquality().equals(other._agents, _agents));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, roleId, const DeepCollectionEquality().hash(_agents));
 
-  /// Create a copy of RoleDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$RoleDetailsImplCopyWith<_$RoleDetailsImpl> get copyWith =>
@@ -707,11 +671,8 @@ abstract class _RoleDetails implements RoleDetails {
   @override
   @JsonKey(name: 'agents')
   List<String>? get agents;
-
-  /// Create a copy of RoleDetails
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$RoleDetailsImplCopyWith<_$RoleDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

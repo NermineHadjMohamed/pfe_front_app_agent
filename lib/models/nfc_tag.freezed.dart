@@ -25,12 +25,8 @@ mixin _$NfcTag {
   String get tagId => throw _privateConstructorUsedError; // Tag ID
   String get state => throw _privateConstructorUsedError;
 
-  /// Serializes this NfcTag to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of NfcTag
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $NfcTagCopyWith<NfcTag> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -52,8 +48,6 @@ class _$NfcTagCopyWithImpl<$Res, $Val extends NfcTag>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of NfcTag
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -96,8 +90,6 @@ class __$$NfcTagImplCopyWithImpl<$Res>
       _$NfcTagImpl _value, $Res Function(_$NfcTagImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of NfcTag
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -158,13 +150,11 @@ class _$NfcTagImpl implements _NfcTag {
             (identical(other.state, state) || other.state == state));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, tagId, state);
 
-  /// Create a copy of NfcTag
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$NfcTagImplCopyWith<_$NfcTagImpl> get copyWith =>
@@ -188,16 +178,13 @@ abstract class _NfcTag implements NfcTag {
 
   @override
   @JsonKey(name: '_id')
-  String? get id; // Optional ID field
-  @override
-  String get tagId; // Tag ID
-  @override
+  String? get id;
+  @override // Optional ID field
+  String get tagId;
+  @override // Tag ID
   String get state;
-
-  /// Create a copy of NfcTag
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$NfcTagImplCopyWith<_$NfcTagImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
