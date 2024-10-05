@@ -1,6 +1,6 @@
 
-import 'package:demo_app/pages/task_details.page.dart';
 import 'package:demo_app/pages/login_page.dart';
+import 'package:demo_app/pages/quit_page.dart';
 import 'package:demo_app/prsentation/screen/read_write_nfc_screen.dart';
 import 'package:demo_app/utils/shared_service.dart';
 import 'package:flutter/material.dart';
@@ -57,6 +57,8 @@ class MainApp extends StatelessWidget {
                 isLoggedIn ?  ReadWriteNFCScreen() : const LoginPage(),
             '/loginAgent': (BuildContext context) => const LoginPage(),
             '/ReadWriteNFCScreen': (BuildContext context) =>ReadWriteNFCScreen(),
+            '/quit': (context) => const QuitPage(), // Route for Quit page
+        
             
            
           },

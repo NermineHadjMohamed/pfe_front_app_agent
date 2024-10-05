@@ -43,6 +43,9 @@ dependencies:
   camera:
   google_mlkit_text_recognition:
   permission_handler:
+  shared_preferences:
+  path_provider:
+  flutter_pdfview:
 
 
 

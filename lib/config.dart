@@ -1,15 +1,14 @@
 class Config {
   static const String appName = "Agent App";
   static const String apiURL =
-      "mediterranean-verse-missile-specify.trycloudflare.com"; // Add scheme
-  static const String imageURL =
-      "mediterranean-verse-missile-specify.trycloudflare.com"; // Assuming the imageURL requires scheme
-
+      "discounted-impossible-transport-gregory.trycloudflare.com"; // Add scheme
+  static const String imageURL = apiURL;
   static const String loginAPI = "api/loginAgent";
   static const String productDetailsAPI = "/ProductDetails";
-   static const String readWriteNFCScreenAPI = "/ReadWriteNFCScreen";
+  static const String readWriteNFCScreenAPI = "/ReadWriteNFCScreen";
+  static const String quitPageRoute = '/quit';
   static const int pageSize = 10;
   static const String currency = "";
-
-
+  static const String startTaskAPI = "api/task/start";
+  static const String finishTaskAPI = "api/task/finish";
 }

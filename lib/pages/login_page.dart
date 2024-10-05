@@ -198,6 +198,25 @@ class _LoginPageState extends State<LoginPage> {
               borderRadius: 20,
             ),
           ),
+          const SizedBox(height: 10),
+
+          // Add Forgot Password text here
+          Center(
+            child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed('/forgot-password');
+              },
+              child: Text(
+                "Forgot Password?",
+                style: TextStyle(
+                  color: Colors.deepOrangeAccent,
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
         ],
       ),
     );

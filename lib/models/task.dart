@@ -1,19 +1,32 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class Task {
+  String productId;
+  String agentId;
+  String roleId;
+  String orderId;
+  int quantity;
+  DateTime startTime;
+  DateTime?
+      finishTime; // Optional, since we won't have it when starting the task.
 
-part 'task.freezed.dart';
-part 'task.g.dart';
+  Task({
+    required this.productId,
+    required this.agentId,
+    required this.roleId,
+    required this.orderId,
+    required this.quantity,
+    required this.startTime,
+    this.finishTime,
+  });
 
-@freezed
-abstract class Task with _$Task {
-  factory Task({
-    @JsonKey(name: '_id') required String id,
-    @JsonKey(name: 'productId') required String productId, // Reference to Product
-    @JsonKey(name: 'roleId') required String roleId,       // Reference to Role
-    @JsonKey(name: 'agentId') required String agentId,     // Reference to Agent
-    @JsonKey(name: 'status') required String status,       // Task status (started or finished)
-    @JsonKey(name: 'startTime') required DateTime startTime, // Start time of the task
-    @JsonKey(name: 'finishTime') DateTime? finishTime,      // Finish time of the task (nullable)
-  }) = _Task;
-
-  factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
+  Map<String, dynamic> toJson() {
+    return {
+      'productId': productId,
+      'agentId': agentId,
+      'roleId': roleId,
+      'orderId': orderId,
+      'quantity': quantity,
+      'startTime': startTime.toIso8601String(),
+      if (finishTime != null) 'finishTime': finishTime?.toIso8601String(),
+    };
+  }
 }
