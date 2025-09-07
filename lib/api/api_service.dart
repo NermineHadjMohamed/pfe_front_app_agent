@@ -19,7 +19,6 @@ class APIService {
     var url = Uri.https(Config.apiURL, Config.loginAPI);
     print('Logging in to URL: $url');
 
-    // Log email and password
     print('Request Payload: {"email":"$email", "password":"$password"}');
 
     var response = await client.post(
@@ -28,20 +27,18 @@ class APIService {
       body: jsonEncode({"email": email, "password": password}),
     );
 
-    // Log response details
     print('Response status: ${response.statusCode}');
     print('Response body: ${response.body}');
 
     if (response.statusCode == 200) {
       var loginResponse = loginResponseJson(response.body);
       if (loginResponse.message == "Success") {
-        // Save the token and agentId in SharedPreferences
         SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString('token', loginResponse.data.token);
         await prefs.setString(
-            'agentId', loginResponse.data.agentId); // Save agentId
+            'agentId', loginResponse.data.agentId); 
         print('Token saved: ${loginResponse.data.token}');
-        print('AgentId saved: ${loginResponse.data.agentId}'); // Log agentId
+        print('AgentId saved: ${loginResponse.data.agentId}'); 
 
         await SharedService.setLoginDetails(loginResponse);
         return true;
@@ -52,7 +49,7 @@ class APIService {
     } else {
       print('Login failed with status: ${response.statusCode}');
       print(
-          'Error body: ${response.body}'); // This will help you see the full error response
+          'Error body: ${response.body}'); 
       return false;
     }
   }
@@ -74,7 +71,7 @@ class APIService {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
       },
-      body: jsonEncode(task.toJson()), // Pass the Task object
+      body: jsonEncode(task.toJson()), 
     );
 
     if (response.statusCode == 200) {
@@ -97,9 +94,8 @@ class APIService {
     }
 
     var url =
-        Uri.https(Config.apiURL, Config.finishTaskAPI); // Correct API endpoint
+        Uri.https(Config.apiURL, Config.finishTaskAPI);
 
-    // Set finish time to current time
     task.finishTime = DateTime.now();
     print(task.toJson());
     try {
@@ -109,7 +105,7 @@ class APIService {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
         },
-        body: jsonEncode(task.toJson()), // Use the updated task object
+        body: jsonEncode(task.toJson()), 
       );
 
       if (response.statusCode == 200) {
@@ -128,19 +124,9 @@ class APIService {
     }
   }
 
-  //  static Future<ProductResponse?> fetchProductByNfcTag(String nfcTagId) async {
-  //   var url = Uri.https(Config.apiURL, '/api/tag/$nfcTagId');
-  //   final response = await http.get(url, headers: {
-  //     'Content-Type': 'application/json',
-  //     'Authorization': 'Bearer your-auth-token', // Add auth token if needed
-  //   });
+  static updateOrderStatus(id, String s) {}
 
-  //   if (response.statusCode == 200) {
-  //     // Deserialize the JSON response to ProductResponse
-  //     return ProductResponse.fromJson(json.decode(response.body));
-  //   } else {
-  //     print('Failed to fetch data');
-  //     return null;
-  //   }
-  // }
+  static checkAllTasksFinished(id) {}
+
+ 
 }

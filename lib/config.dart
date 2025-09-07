@@ -1,7 +1,7 @@
 class Config {
   static const String appName = "Agent App";
   static const String apiURL =
-      "discounted-impossible-transport-gregory.trycloudflare.com"; // Add scheme
+      "valuation-net-analog-readers.trycloudflare.com"; 
   static const String imageURL = apiURL;
   static const String loginAPI = "api/loginAgent";
   static const String productDetailsAPI = "/ProductDetails";

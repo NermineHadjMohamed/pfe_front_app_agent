@@ -6,13 +6,13 @@ import 'package:http/http.dart' as http;
 class NFCNotifier extends ChangeNotifier {
   bool _isProcessing = false;
   String _message = "";
-  Map<String, dynamic>? _productDetails; // Stocker les détails du produit
+  Map<String, dynamic>? _productDetails; 
 
   bool get isProcessing => _isProcessing;
   String get message => _message;
   Map<String, dynamic>? get productDetails => _productDetails;
 
-  // Début de l'opération NFC (lecture/écriture)
+
   Future<void> startNFCOperation({required NFCOperation nfcOperation}) async {
     try {
       _isProcessing = true;
@@ -49,7 +49,6 @@ class NFCNotifier extends ChangeNotifier {
     }
   }
 
-  // Lire depuis une étiquette NFC
   Future<String?> _readFromTag({required NfcTag tag}) async {
     String? nfcTagId;
 
@@ -65,7 +64,7 @@ class NFCNotifier extends ChangeNotifier {
             nfcData['ndef']['cachedMessage']?['records']?[0]['payload'];
         if (payload != null) {
           nfcTagId = String.fromCharCodes(
-              payload.sublist(3)); // Sauter les premiers caractères inutiles
+              payload.sublist(3)); 
           _message = "NFC Tag ID: $nfcTagId";
         } else {
           _message = "No payload data found on the NFC tag.";
@@ -80,7 +79,6 @@ class NFCNotifier extends ChangeNotifier {
     return nfcTagId;
   }
 
-  // Récupérer les informations du produit via l'ID NFC
   Future<void> _fetchProductByNfcTag(String nfcTagId) async {
     final url = Uri.parse("https://your-api-url/api/tag/$nfcTagId");
     try {

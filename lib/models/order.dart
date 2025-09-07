@@ -8,7 +8,7 @@ abstract class Order with _$Order {
   factory Order({
     @JsonKey(name: '_id') required String id,
     required String userId,
-    required List<ProductItem> products, // Update to match the structure of the response
+    required List<ProductItem> products, 
     required double grandTotal,
     required String orderStatus,
     required DateTime createdAt,
@@ -17,11 +17,11 @@ abstract class Order with _$Order {
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 }
 
-// This is the item in the `products` list in the API response
+
 @freezed
 abstract class ProductItem with _$ProductItem {
   factory ProductItem({
-    required Product product,  // Nested product object
+    required Product product,  
     required double amount,
     required int quantity,
   }) = _ProductItem;
@@ -29,7 +29,6 @@ abstract class ProductItem with _$ProductItem {
   factory ProductItem.fromJson(Map<String, dynamic> json) => _$ProductItemFromJson(json);
 }
 
-// This matches the `product` object inside the `ProductItem` in the response
 @freezed
 abstract class Product with _$Product {
   factory Product({

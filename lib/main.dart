@@ -57,7 +57,7 @@ class MainApp extends StatelessWidget {
                 isLoggedIn ?  ReadWriteNFCScreen() : const LoginPage(),
             '/loginAgent': (BuildContext context) => const LoginPage(),
             '/ReadWriteNFCScreen': (BuildContext context) =>ReadWriteNFCScreen(),
-            '/quit': (context) => const QuitPage(), // Route for Quit page
+            '/quit': (context) => const QuitPage(),
         
             
            

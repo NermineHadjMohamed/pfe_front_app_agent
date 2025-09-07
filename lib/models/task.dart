@@ -6,7 +6,7 @@ class Task {
   int quantity;
   DateTime startTime;
   DateTime?
-      finishTime; // Optional, since we won't have it when starting the task.
+      finishTime; 
 
   Task({
     required this.productId,

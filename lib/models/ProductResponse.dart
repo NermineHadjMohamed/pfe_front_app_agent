@@ -3,32 +3,32 @@ import 'product.dart';
 import 'parameter.dart';
 import 'role.dart';
 
-part 'ProductResponse.freezed.dart'; // Ensure proper case sensitivity
-part 'ProductResponse.g.dart'; // For JSON serialization
+part 'ProductResponse.freezed.dart'; 
+part 'ProductResponse.g.dart'; 
 
-// Define the complete response structure
+
 @freezed
 abstract class ProductResponse with _$ProductResponse {
   factory ProductResponse({
-    required bool success, // Indicates if the API call was successful
+    required bool success, 
     required List<OrderProduct>
-        data, // List of products and associated order information
+        data, 
   }) = _ProductResponse;
 
   factory ProductResponse.fromJson(Map<String, dynamic> json) =>
       _$ProductResponseFromJson(json);
 }
 
-// Define the structure of products within the order
+
 @freezed
 abstract class OrderProduct with _$OrderProduct {
   factory OrderProduct({
-    required String orderId, // Order ID
-    required Product productDetails, // Use the detailed Product model
-    required int quantity, // Quantity of the product
-    String? expectedFinishDate, // Expected finish date for the product
-    required List<Parameter> parameters, // List of product parameters
-    required List<Role> roles, // List of roles associated with the product
+    required String orderId, 
+    required Product productDetails, 
+    required int quantity, 
+    String? expectedFinishDate, 
+    required List<Parameter> parameters, 
+    required List<Role> roles, 
   }) = _OrderProduct;
 
   factory OrderProduct.fromJson(Map<String, dynamic> json) =>

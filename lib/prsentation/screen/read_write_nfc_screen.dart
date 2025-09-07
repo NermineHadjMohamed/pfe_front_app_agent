@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:demo_app/config.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart'; // Import ML Kit
-import 'package:http/http.dart' as http; // Import HTTP package
+import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart'; 
+import 'package:http/http.dart' as http; 
 import 'package:path_provider/path_provider.dart';
-import 'dart:convert'; // Import for jsonEncode
+import 'dart:convert'; 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 
@@ -32,7 +32,7 @@ class _ReadWriteNFCScreenState extends State<ReadWriteNFCScreen> {
   CameraController? _cameraController;
   bool _isDetecting = false;
   final TextRecognizer _textRecognizer = TextRecognizer();
-  String? nfcTagId; // Variable to hold detected NFC Tag ID
+  String? nfcTagId; 
 
   @override
   void initState() {
@@ -58,7 +58,7 @@ class _ReadWriteNFCScreenState extends State<ReadWriteNFCScreen> {
   @override
   void dispose() {
     _cameraController?.dispose();
-    _textRecognizer.close(); // Close the recognizer when not needed
+    _textRecognizer.close(); 
     super.dispose();
   }
 
@@ -69,21 +69,14 @@ class _ReadWriteNFCScreenState extends State<ReadWriteNFCScreen> {
       });
 
       try {
-        // Capture an image from the camera
         final image = await _cameraController!.takePicture();
-
-        // Process the image using the text recognizer
         final inputImage = InputImage.fromFilePath(image.path);
         final recognizedText = await _textRecognizer.processImage(inputImage);
-
-        // Extract numbers from recognized text
         nfcTagId = _extractNumbersFromText(recognizedText.text);
 
         setState(() {
           _isDetecting = false;
         });
-
-        // Send the detected NFC tag ID to the API
         await _sendNfcTagIdToApi(context);
       } catch (e) {
         print("Error detecting text: $e");
@@ -94,23 +87,19 @@ class _ReadWriteNFCScreenState extends State<ReadWriteNFCScreen> {
     }
   }
 
-  // Extract numbers from the recognized text
   String _extractNumbersFromText(String text) {
-    final numberRegExp = RegExp(r'\d+'); // Regular expression to find numbers
+    final numberRegExp = RegExp(r'\d+'); 
     final match = numberRegExp.firstMatch(text);
     return match?.group(0) ??
-        'No numbers detected'; // Return detected number or default message
+        'No numbers detected'; 
   }
 
-  // Send detected NFC tag ID to the API
-  // Send detected NFC tag ID to the API
-  // In _sendNfcTagIdToApi(), make sure to pass the agentId that is currently logged in or relevant.
   Future<void> _sendNfcTagIdToApi(BuildContext context) async {
     if (nfcTagId != null) {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String? token = prefs.getString('token');
       String? agentId =
-          prefs.getString('agentId'); // Get current agent's ID from preferences
+          prefs.getString('agentId'); 
 
       if (token == null || agentId == null) {
         print('Error: Token or agentId is null, unable to send NFC tag ID');
@@ -136,18 +125,14 @@ class _ReadWriteNFCScreenState extends State<ReadWriteNFCScreen> {
               jsonResponse['products']['success'] == true) {
             var productData = jsonResponse['products']['data'][0];
             var productDetails = productData['productDetails'];
-
-            // Extract productId, orderId, roleId, and quantity
-            var productId = productData['productId']; // Extract productId
-            var orderId = productData['orderId']; // Extract orderId
-            var quantity = productData['quantity']; // Extract quantity
-
-            // Extract roleId from the roles array (if needed)
+            var productId = productData['productId'];
+            var orderId = productData['orderId']; 
+            var quantity = productData['quantity']; 
             List roles = productDetails['roles'];
             String? roleId;
             for (var role in roles) {
               if (role['agents'].any((agent) => agent['agentId'] == agentId)) {
-                roleId = role['roleId']; // Extract roleId for the agent
+                roleId = role['roleId']; 
                 break;
               }
             }
@@ -156,8 +141,6 @@ class _ReadWriteNFCScreenState extends State<ReadWriteNFCScreen> {
             print("Extracted orderId: $orderId");
             print("Extracted quantity: $quantity");
             print("Extracted roleId: $roleId");
-
-            // Navigate based on whether the agent is in "Quality Assurance" role
             bool isQualityAssurance = roles.any((role) {
               return role['roleName'].trim() == "Quality Assurance" &&
                   role['agents'].any((agent) => agent['agentId'] == agentId);
@@ -185,7 +168,7 @@ class _ReadWriteNFCScreenState extends State<ReadWriteNFCScreen> {
                         productDocument: productDetails['productDocument'],
                         roleName: roles[0]['roleName'],
                         roleId: roleId.toString(),
-                        orderId: orderId // Display first roleName as fallback
+                        orderId: orderId 
                         ),
               ),
             );
@@ -370,15 +353,15 @@ class PdfViewPage extends StatelessWidget {
 }
 
 class QualityAssuranceWidget extends StatefulWidget {
-  final List<dynamic> parameters; // List of parameters
-  final String roleName; // Role name
+  final List<dynamic> parameters; 
+  final String roleName; 
   final String productName;
   final int quantity;
   final String productDocument;
   final String productId;
-  final String roleId; // Add roleId
-  final String orderId; // Add orderId
-  String agentId; // Change to productName (instead of productId)
+  final String roleId; 
+  final String orderId; 
+  String agentId; 
 
   QualityAssuranceWidget({
     required this.parameters,
@@ -387,9 +370,9 @@ class QualityAssuranceWidget extends StatefulWidget {
     required this.quantity,
     required this.productDocument,
     required this.productId,
-    required this.roleId, // Add roleId
+    required this.roleId, 
     required this.orderId,
-    required this.agentId, // Initialize productName
+    required this.agentId,
   });
 
   @override
@@ -397,14 +380,13 @@ class QualityAssuranceWidget extends StatefulWidget {
 }
 
 class _QualityAssuranceWidgetState extends State<QualityAssuranceWidget> {
-  Map<String, String?> selectedValues = {}; // Store selected values
-  bool isTaskStarted = false; // Track if the task is started
+  Map<String, String?> selectedValues = {}; 
+  bool isTaskStarted = false; 
 
   @override
   Widget build(BuildContext context) {
-    // Check if roleName is "Quality Assurance"
     if (widget.roleName.trim() != "Quality Assurance") {
-      return const SizedBox.shrink(); // Return an empty widget if not QA role
+      return const SizedBox.shrink(); 
     }
     return Scaffold(
       appBar: AppBar(
@@ -489,7 +471,6 @@ class _QualityAssuranceWidgetState extends State<QualityAssuranceWidget> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                // Buttons for Confirm and Cancel
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -498,9 +479,9 @@ class _QualityAssuranceWidgetState extends State<QualityAssuranceWidget> {
                           backgroundColor: Colors.blue),
                       onPressed: () {
                         _handleConfirm(
-                            context); // Call method to handle confirmation
+                            context); 
                       },
-                      child: const Text("Confirm"), // Change to Confirm
+                      child: const Text("Confirm"), 
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -508,14 +489,13 @@ class _QualityAssuranceWidgetState extends State<QualityAssuranceWidget> {
                         backgroundColor: Colors.white,
                       ),
                       onPressed: () {
-                        _handleCancel(); // Clear selections
+                        _handleCancel(); 
                       },
-                      child: const Text("Cancel"), // Change to Cancel
+                      child: const Text("Cancel"),
                     ),
                   ],
                 ),
                 const SizedBox(height: 16),
-                // Add TaskTimerWidget here
                 TaskTimerWidget(
                   productId: widget.productId,
                   roleId: widget.roleId,
@@ -531,10 +511,9 @@ class _QualityAssuranceWidgetState extends State<QualityAssuranceWidget> {
     );
   }
 
-  // Handle the confirm button action
   void _handleConfirm(BuildContext context) {
     setState(() {
-      isTaskStarted = true; // Mark the task as started when confirmed
+      isTaskStarted = true; 
     });
 
     bool allSelected = selectedValues.length == widget.parameters.length;
@@ -542,7 +521,6 @@ class _QualityAssuranceWidgetState extends State<QualityAssuranceWidget> {
         allSelected && selectedValues.values.every((value) => value == "Yes");
 
     if (!allSelected) {
-      // Check if any parameter is left unchecked (empty)
       _showMessage(
         context,
         "Error",
@@ -551,7 +529,6 @@ class _QualityAssuranceWidgetState extends State<QualityAssuranceWidget> {
         Icons.warning_amber_rounded,
       );
     } else if (allYes) {
-      // Show success message if all are "Yes"
       _showMessage(
         context,
         "Success",
@@ -560,28 +537,21 @@ class _QualityAssuranceWidgetState extends State<QualityAssuranceWidget> {
         Icons.check_circle,
       );
     } else {
-      // Identify parameters with "No" or "Undefined"
       List<String> problematicParams = widget.parameters
           .where((param) => selectedValues[param['name']] != "Yes")
           .map((param) => param['name'].toString())
           .toList();
-
-      // Show error message listing the problematic parameters
       String errorMessage =
           "The following parameters for product ${widget.productName} are not confirmed: ${problematicParams.join(", ")}.";
       _showMessage(context, "Error", errorMessage, Colors.red, Icons.error);
     }
   }
-
-  // Handle the cancel button action
   void _handleCancel() {
     setState(() {
-      selectedValues.clear(); // Clear all selections
-      isTaskStarted = false; // Reset task status
+      selectedValues.clear(); 
+      isTaskStarted = false; 
     });
   }
-
-  // Helper method to show a message (success or error) with icons for friendly UI
   void _showMessage(BuildContext context, String title, String message,
       Color color, IconData icon) {
     showDialog(
@@ -598,7 +568,7 @@ class _QualityAssuranceWidgetState extends State<QualityAssuranceWidget> {
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.pop(context); // Close the dialog
+              Navigator.pop(context); 
             },
             child: const Text("OK"),
           ),
@@ -610,11 +580,11 @@ class _QualityAssuranceWidgetState extends State<QualityAssuranceWidget> {
 
 class TaskTimerWidget extends StatefulWidget {
   final String productId;
-  final String roleId; // Add roleId
-  final String orderId; // Add orderId
+  final String roleId; 
+  final String orderId; 
   final int quantity;
 
-  final String agentId; // Add quantity
+  final String agentId; 
 
   const TaskTimerWidget(
       {required this.productId,
@@ -630,30 +600,24 @@ class TaskTimerWidget extends StatefulWidget {
 class _TaskTimerWidgetState extends State<TaskTimerWidget> {
   bool isStarted = false;
   DateTime? startTime;
-  Duration timerDuration = Duration.zero; // Initialize to zero
-  Timer? _timer; // Timer to update the UI
+  Duration timerDuration = Duration.zero; 
+  Timer? _timer; 
 
   void _startTask() {
     setState(() {
       isStarted = true;
       startTime = DateTime.now();
-      timerDuration = Duration.zero; // Reset the timer when the task starts
+      timerDuration = Duration.zero; 
     });
-
-    // Create a Task instance with all required parameters
     Task task = Task(
       productId: widget.productId,
-      agentId: widget.agentId, // Agent ID will be set in the API call
+      agentId: widget.agentId, 
       roleId: widget.roleId,
       orderId: widget.orderId,
       quantity: widget.quantity,
       startTime: startTime!,
     );
-
-    // Call the startTask API
     APIService.startTask(task);
-
-    // Start a periodic timer to update the UI every second
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
         timerDuration = DateTime.now().difference(startTime!);
@@ -666,22 +630,20 @@ class _TaskTimerWidgetState extends State<TaskTimerWidget> {
       setState(() {
         isStarted = false;
         if (_timer != null) {
-          _timer?.cancel(); // Stop the timer when the task is finished
+          _timer?.cancel(); 
           _timer = null;
         }
       });
 
-      // Create a Task instance with all parameters
       Task task = Task(
         productId: widget.productId,
-        agentId: widget.agentId, // Agent ID will be set in the API call
+        agentId: widget.agentId, 
         roleId: widget.roleId,
         orderId: widget.orderId,
         quantity: widget.quantity,
         startTime: startTime!,
       );
 
-      // Call the API to finish the task
       await APIService.sendFinishTaskApi(task);
 
       print(
@@ -690,11 +652,10 @@ class _TaskTimerWidgetState extends State<TaskTimerWidget> {
         SnackBar(
           content: const Text('Task finished successfully'),
           duration:
-              const Duration(seconds: 2), // Display the message for 2 seconds
+              const Duration(seconds: 2), 
         ),
       );
 
-      // Navigate to the ReadWriteNFCScreen after the message
       Future.delayed(const Duration(seconds: 2), () {
         Navigator.pushReplacementNamed(context, '/ReadWriteNFCScreen');
       });
@@ -703,7 +664,7 @@ class _TaskTimerWidgetState extends State<TaskTimerWidget> {
 
   @override
   void dispose() {
-    _timer?.cancel(); // Cancel the timer if the widget is disposed
+    _timer?.cancel(); 
     super.dispose();
   }
 
@@ -721,23 +682,20 @@ class _TaskTimerWidgetState extends State<TaskTimerWidget> {
         const SizedBox(height: 16),
         ElevatedButton(
           onPressed:
-              isStarted ? null : _startTask, // Disable if already started
+              isStarted ? null : _startTask, 
           child: const Text('Start Task'),
           style: ElevatedButton.styleFrom(
             backgroundColor:
-                Colors.green, // Set the color to green for "Start Task"
+                Colors.green, 
           ),
         ),
         const SizedBox(height: 8),
         ElevatedButton(
           onPressed: isStarted ? _finishTask : null,
-
-          // Disable if not started
           child: const Text('Finish Task'),
 
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.red,
-            // Set the color to red for "Finish Task"
           ),
         ),
       ],

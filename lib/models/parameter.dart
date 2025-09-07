@@ -7,8 +7,8 @@ part 'parameter.g.dart';
 abstract class Parameter with _$Parameter {
   factory Parameter({
     @JsonKey(name: '_id') required String id,
-    @JsonKey(name: 'parameter_name') required String parameterName, // Name of the parameter
-    @JsonKey(name: 'parameter_value') required String parameterValue, // Value of the parameter
+    @JsonKey(name: 'parameter_name') required String parameterName, 
+    @JsonKey(name: 'parameter_value') required String parameterValue, 
   }) = _Parameter;
 
   factory Parameter.fromJson(Map<String, dynamic> json) => _$ParameterFromJson(json);
